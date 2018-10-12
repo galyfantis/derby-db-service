@@ -2,9 +2,9 @@ FROM lwieske/java-8
 
 RUN adduser -D demo demo
 
-#ENV DERBY_HOME=/opt/derby
-#ENV DERBY_LIB=${DERBY_HOME}/lib
-#ENV CLASSPATH=${DERBY_LIB}/derby.jar:${DERBY_LIB}/derbynet.jar:${DERBY_LIB}/derbytools.jar:${DERBY_LIB}/derbyoptionaltools.jar:${DERBY_LIB}/derbyclient.jar
+ENV DERBY_HOME=/opt/derby
+ENV DERBY_LIB=${DERBY_HOME}/lib
+ENV CLASSPATH=${DERBY_LIB}/derby.jar:${DERBY_LIB}/derbynet.jar:${DERBY_LIB}/derbytools.jar:${DERBY_LIB}/derbyoptionaltools.jar:${DERBY_LIB}/derbyclient.jar
 
 RUN mkdir -p /opt/derby/lib
 
@@ -20,13 +20,8 @@ RUN chown -R demo:demo /opt/derby /database
 
 USER demo
 
-#WORKDIR /database
-
 WORKDIR /opt/derby/lib
 
 EXPOSE 1527
 
-#ENTRYPOINT java -jar /opt/derby/lib/derbyrun.jar server start -p 1527 -h 0.0.0.0 -noSecurityManager
-ENTRYPOINT java -Dderby.system.home=/database -jar derbyrun.jar server start -p 1527 -h 0.0.0.0 -noSecurityManager
-
-#ENTRYPOINT java org.apache.derby.drda.NetworkServerControl start -p 1527 -h 0.0.0.0
+ENTRYPOINT java -Dderby.system.home=/database org.apache.derby.drda.NetworkServerControl start -p 1527 -h 0.0.0.0

@@ -15,15 +15,4 @@
 			<outputFileNameMapping>${artifact.artifactId}.${artifact.extension}</outputFileNameMapping>
 		</dependencySet>
 	</dependencySets>
-	
-	<fileSets>
-		<fileSet>
-			<directory>/lib</directory>
-			<outputDirectory>/</outputDirectory>
-			<includes>
-				<include>derbyrun.jar</include>
-			</includes>
-		</fileSet>
-	</fileSets>
-
 </assembly>
