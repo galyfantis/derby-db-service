@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.concretepage</groupId>
   <artifactId>derby-db-service</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.1</version>
   
   <properties>
   	<derby.version>10.13.1.1</derby.version>
